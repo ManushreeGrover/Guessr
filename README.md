@@ -18,9 +18,9 @@ Welcome to Guessr, a thrilling two-player game where players go head-to-head in 
 
 ## Future Scope
 
-- Enhanced graphics and UI for a more immersive experience..
+- Enhanced graphics and UI for a more immersive experience.
 - Leaderboards to showcase top players.
-- High score display for enhanced experience
+- High score display for enhanced experience.
 
 ## Contributions
 This game is open to contributions! If you have ideas, find bugs, or want to add features, feel free to contribute.
