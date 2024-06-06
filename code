@@ -1,4 +1,13 @@
 import java.util.Scanner;
+
+class Player{
+	String player_name;
+	int score=0;
+     Player(String name) {
+    	 this.player_name=name;
+     }
+}
+
 public class GuessGame {
 			public static void main(String[]args) {
 			Scanner s=new Scanner(System.in);
@@ -8,58 +17,63 @@ public class GuessGame {
 			System.out.println("How many times you wish to play?");
 			System.out.println("**********************************************************");
 			int t=s.nextInt();
-			String x="Player 1";
-			String y="Player 2";
-			int PLayer_1_points=0;
-			int PLayer_2_points=0;
+			System.out.println("Enter player1 name: ");
+			Player p1=new Player(s.next());
+			System.out.println("Enter player2 name: ");
+			Player p2=new Player(s.next());			
 			String z;
-			z=x;
+			z=p1.player_name;
 			String w;
-			w=y;
-			int p1=0;
-			int p2=0;
+			w=p2.player_name;
+			int chance1=0;
+			int chance2=0;
+			
 			for(int k=1;k<=t;k++) {
 			for(int i=1;i<=2;i++) {
+				
 				System.out.println(z+" your chance");
 				System.out.println("Enter any position from 1 to 10");
-			    p1=s.nextInt();
-			    if(p1>10 || p1<=0) {
-			    	System.out.println("Invalid move. Enter again");
-			    	p1=s.nextInt();
-			    	while(p1>10 || p1<=0) {
-			        System.out.println("Invalid move. Enter again");
-			    	p1=s.nextInt();
-			    	}
-			    }
+			       chance1=s.nextInt();
+			       if(chance1>10 || chance1<=0   ) {
+			    	   System.out.println("Invalid move. Enter again");
+			    	   while(chance1>10 || chance1<=0) {
+			                 System.out.println("Invalid move. Enter again");
+			    	        chance1=s.nextInt();
+			    	   }
+			       }
+			    
 			    System.out.println(w+" your chance");
 			    System.out.println("Enter any position from 1 to 10");
-			    p2=s.nextInt();
-			    if(p2>10 || p2<=0) {
+			    chance2=s.nextInt();
+			    
+			    if(chance2>10 || chance2<=0 ) {
 			    	System.out.println("Invalid move. Enter again");
-			    	p2=s.nextInt();
-			    	while(p2>10 || p2<=0) {
+			    	chance2=s.nextInt();
+			    	while(chance2>10 || chance2<=0) {
 			        System.out.println("Invalid move. Enter again");
-			    	p2=s.nextInt();
+			    	chance2=s.nextInt();
 			    	}
-			    //	return;
 			    }
-			    if(z==x) {
-			    if(arr1[p1-1]==arr2[p2-1]) {
-			    	PLayer_2_points=(PLayer_2_points)+1;
+			    
+			    if(z==p1.player_name) {
+			    if(arr1[chance1-1]==arr2[chance2-1]) {
+			    	p2.score=(p2.score)+1;
 			    	System.out.println("Yayy the guess is right");
-			    	System.out.println("1 point added to player 2");
+			    	System.out.println("1 point added to "+p2.player_name);
 			    	System.out.println("**********************************************************");
 			    }
+			    
 			    else {
 				    	System.out.println("The numbers are not equal...Better luck next time:)");
-				    	System.out.println("*********************************************************");
+				    	System.out.println("**********************************************************");
 				    }
 			    }
-			    if(z==y) {
-			    	if(arr2[p1-1]==arr1[p2-1]) {
-			    	PLayer_1_points=PLayer_1_points+1;
+			    
+			    if(z==p2.player_name) {
+			    	if(arr2[chance1-1]==arr1[chance2-1]) {
+			    	p1.score=p1.score+1;
 			    	System.out.println("Yayy the guess is right");
-			    	System.out.println("1 point added to player 1");
+			    	System.out.println("1 point added to "+p1.player_name);
 			    	System.out.println("**********************************************************");
 			    }
 			    	else {
@@ -67,31 +81,38 @@ public class GuessGame {
 			    	System.out.println("**********************************************************");
 			    }
 			    }
-			    if(z==x) {
-					z=y;
+			    
+			    if(z==p1.player_name) {
+					z=p2.player_name;
 				}
+			    
 				else {
-					z=x;
+					z=p1.player_name;
 				}
-				if(w==y) {
-					w=x;
+			    
+				if(w==p2.player_name) {
+					w=p1.player_name;
 				}
+				
 				else {
-					w=y;
+					w=p2.player_name;
 				}
 			}
 			}
-		if(PLayer_1_points>PLayer_2_points) {
-			System.out.println("Player 1 you won! with total points- "+PLayer_1_points);
+			
+		if(p1.score>p2.score) {
+			System.out.println(p1.player_name+" you won! with total points- "+p1.score);
 			System.out.println("The game is over");
 			System.out.println("***********************************************************");
 		}
-		if(PLayer_1_points<PLayer_2_points) {
-			System.out.println("Player 2 you won! with total points- "+PLayer_2_points);
+		
+		if(p1.score<p2.score) {
+			System.out.println(p2.player_name+" you won! with total points- "+p2.score);
 			System.out.println("The game is over");
 			System.out.println("***********************************************************");
 		}
-		if(PLayer_1_points==PLayer_2_points) {
+		
+		if(p1.score==p2.score) {
 			System.out.println("It is a tie");
 			System.out.println("The game is over");
 			System.out.println("***********************************************************");
